@@ -1,11 +1,11 @@
 {
-  "name": "Family Safety Map",
-  "short_name": "Family Safety",
+  "name": "Regional Family Safety Map",
+  "short_name": "Safety Map",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#eef2f6",
   "theme_color": "#111827",
-  "description": "Neighborhood awareness map with public registry-derived candidates and device-local private reference location.",
+  "description": "Regional neighborhood-awareness map with device-local private reference locations, large-radius filters, and local dataset import.",
   "icons": [
     {
       "src": "icon-180.png",

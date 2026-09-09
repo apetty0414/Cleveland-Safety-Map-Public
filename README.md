@@ -1,38 +1,42 @@
-# Family Safety Map — Public-Safe Build
+# Regional Family Safety Map — Public-Safe PWA
 
-This build is designed for public static hosting such as GitHub Pages.
+This version expands the original neighborhood map into a regional/general-purpose tool.
 
-## Privacy model
+## Key improvements
+- Adjustable radius from **1 to 50 miles**
+- Quick presets: 1, 5, 10, 25, and 50 miles
+- Any private reference location can be entered on-device
+- Multiple reference locations can be saved locally (Home, School, Grandparents, etc.)
+- Browse/recenter the map anywhere without changing the private reference
+- 1/5/10-mile guide rings plus selected-radius ring
+- Distance and nearest-first filtering around the selected reference
+- Local CSV/JSON registry import, stored in browser only
+- Apple Maps and Google Maps links
+- Installable PWA on iPhone/Android
+- No private home address or coordinates stored in GitHub
 
-This repository contains **no private home address and no private home coordinates**.
+## Important data-coverage note
+The built-in dataset still contains only the original Cleveland-area sample. Increasing the radius does **not** automatically retrieve additional registry entries.
 
-The application asks the user to enter a private reference address or place on their own device. That reference point is geocoded in the browser and stored only in browser `localStorage`.
+For use in other areas, import a CSV/JSON dataset locally or use the official registry search for that jurisdiction.
 
-Because the reference location is not committed to GitHub, a public repository does not expose it.
+## CSV format
+`name,address,classification,offense,minorRelated,profile`
 
-Clearing browser/site data will remove the saved private reference point.
+The app will geocode imported addresses in the user's browser and cache the results locally.
 
-## GitHub Pages deployment
+## GitHub Pages
+Upload all files to a public repository root, then:
+Settings → Pages → Deploy from a branch → `main` → `/ (root)`.
 
-1. Create a new **public** GitHub repository, for example `Cleveland-Safety-Map`.
-2. Upload every file from this folder to the repository root.
-3. Open **Settings → Pages**.
-4. Under **Build and deployment**, choose **Deploy from a branch**.
-5. Select the `main` branch and `/ (root)`.
-6. Save.
-7. Open the HTTPS URL GitHub provides.
+## Privacy
+Private reference locations and imported datasets are stored in browser localStorage only and are not committed to GitHub.
 
-## iPhone
 
-Open the GitHub Pages HTTPS URL in Safari or Chrome.
+## Automatic data refresh
 
-In Safari:
-Share → **Add to Home Screen**
+This package includes a GitHub Actions automation framework under:
 
-The first time the app opens, enter your private reference location. It remains on that browser/device.
+`.github/workflows/refresh-registry.yml`
 
-## Public-record data
-
-The repository contains registry-derived candidate addresses and public family-location references used by the map. Registry information can change and should be verified against the official Ohio eSORN/Cuyahoga County registry before relying on it.
-
-Do not use classification as an individualized danger score.
+See `AUTOMATION.md` for setup. The automation expects an approved/public JSON feed configured through GitHub Secrets. It intentionally does not scrape registry web pages.

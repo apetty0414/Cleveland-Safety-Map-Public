@@ -1,0 +1,18 @@
+{
+  "source": {
+    "adapter": "json_url",
+    "url_env": "REGISTRY_SOURCE_URL",
+    "auth_header_env": "REGISTRY_SOURCE_AUTH_HEADER",
+    "notes": "Set REGISTRY_SOURCE_URL only to an approved/public JSON feed or your own endpoint. No website scraping is performed."
+  },
+  "geocoding": {
+    "provider": "nominatim",
+    "user_agent": "RegionalFamilySafetyMap/1.0 (GitHub Actions)",
+    "request_delay_seconds": 1.1,
+    "enabled": true
+  },
+  "output": {
+    "path": "registry-data.json",
+    "change_log_path": "registry-changes.json"
+  }
+}
